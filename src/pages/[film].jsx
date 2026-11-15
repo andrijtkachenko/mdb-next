@@ -1,6 +1,7 @@
 import { getMovieById } from "@/API/getMovieById";
 import { useEffect } from "react";
 import { baseImagePath } from "@/service/baseImagePath";
+import { Header } from "@/components/Header";
 import styled from "@emotion/styled";
 
 export async function getServerSideProps(context) {
@@ -16,7 +17,6 @@ const BackDrop = styled.div`
   background-color: gray;
   background-image: url("${(props) => props.imageUrl}");
   background-size: cover;
-  padding-top: 30px;
 `;
 const FilmContainer = styled.div`
   width: 80%;
@@ -47,9 +47,15 @@ export default function Films({ data }) {
   //poster_path
   return (
     <BackDrop imageUrl={baseImagePath + data.backdrop_path}>
+      <Header />
       <FilmContainer>
         <div className="head">
           <h1>{data.title}</h1>
+          <h5>Release date: {data.release_date}</h5>
+          <h5>{data.tagline}</h5>
+          <h5>Runtime: {data.runtime} minutes</h5>
+          <h5>Vote average: {data.vote_average}</h5>
+          <p>{data.overview}</p>
           <div className="poster">
             <img src={baseImagePath + data.poster_path} alt="" />
           </div>

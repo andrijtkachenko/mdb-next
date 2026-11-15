@@ -20,6 +20,8 @@ export const MovieCard = ({ movie }) => {
       <a href={`/${movie.id}`}>
         <div className="thumb"></div>
         <p>{movie.title}</p>
+        <h3>{movie.release_date}</h3>
+        <h3>{movie.vote_average}</h3>
       </a>
     </StyledCard>
   );

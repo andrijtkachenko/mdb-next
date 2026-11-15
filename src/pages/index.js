@@ -1,7 +1,7 @@
 import { MovieList } from "../components/MovieList";
 import { useState } from "react";
 import { Pagination } from "../components/Pagiation";
-import Head from "next/head";
+import { Header } from "../components/Header";
 
 export default function Main() {
   const [page, setPage] = useState(2);
@@ -10,9 +10,12 @@ export default function Main() {
 
   return (
     <>
-      <h1>This is main</h1>
-      <MovieList setPagesCount={setPagesCount} page={page} />
-      <Pagination setPage={setPage} pagesCount={pagesCount} page={page} />
+      <Header />
+      <h1>Top Movies</h1>
+      <main>
+        <MovieList setPagesCount={setPagesCount} page={page} />
+        <Pagination setPage={setPage} pagesCount={pagesCount} page={page} />
+      </main>
     </>
   );
 }
