@@ -1,7 +1,7 @@
 import { getMovieById } from "@/API/getMovieById";
 import { useEffect } from "react";
 import { baseImagePath } from "@/service/baseImagePath";
-import { Header } from "@/components/Header";
+// import { Header } from "@/components/Header";
 import styled from "@emotion/styled";
 import { Header } from "@/components/Header";
 
@@ -17,10 +17,6 @@ const BackDrop = styled.div`
   background-color: gray;
   background-image: url("${(props) => props.imageUrl}");
   background-size: cover;
-<<<<<<< HEAD
-=======
-  /* padding-top: 30px; */
->>>>>>> 38e109438a50cd7bb104489700bfab7033978221
 `;
 const FilmContainer = styled.div`
   width: 80%;

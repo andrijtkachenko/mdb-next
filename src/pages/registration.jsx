@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
-import { StyledForm, StyledInput } from "@/components/Styled.Form";
 import { useState } from "react";
 import { createUserClient } from "@/API/createUser";
+import { StyledForm, StyledInput } from "@/components/StyledForm";
 export default function Registration() {
   const [login, setLogin] = useState("");
   const [password, setPassowrd] = useState("");

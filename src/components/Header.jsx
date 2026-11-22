@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 import { Container } from "./Container";
+import { UserContext } from "@/pages/_app";
+import { useState, useEffect } from "react";
 
 const HeaderContainer = styled(Container)`
   display: flex;
@@ -18,6 +20,20 @@ const HeaderContainer = styled(Container)`
 `;
 
 export const Header = () => {
+  const [user,setUser] = useState(null);
+  //const { "user" } = UserContext(UserContext);
+
+  useEffect(() => {
+    const user = window.localStorage.getItem("user")
+    if (!user) {
+      return
+    }
+    setUser(JSON.parse(user))
+  }, [])
+  const onExit =() => {
+    window.localStorage.removeItem("user");
+    setUser(null)
+  }
   return (
     <header
       style={{
@@ -30,8 +46,14 @@ export const Header = () => {
         <h1>MDB-NEXT</h1>
         <nav>
           <a href="/">Головна</a>
-          <a href="/login">Вхід</a>
-          <a href="/registration">Реєстрація</a>
+          {!user && (
+            <>
+            <a href="/login">Вхід</a>
+            <a href="/registration">Реєстрація</a>
+          </>
+          )}
+          {user && <a href="/">{user.login}</a>}
+          {user && <button onClick={onExit}>Вихіт</button>}
         </nav>
       </HeaderContainer>
     </header>

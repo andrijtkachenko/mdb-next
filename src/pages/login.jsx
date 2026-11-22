@@ -1,15 +1,28 @@
 import { Header } from "@/components/Header";
 import { StyledForm, StyledInput } from "@/components/StyledForm";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "./_app";
+import { useRouter } from "next/router";
+//import { UserContext } from "@/service/userContext";
 
 export default function Login () {
-    const [login, setLogin] = useState("")
-    const [password, setPassword] = useState("")
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
+    const router = useRouter();
 
-    const onSubmit = (event) => {
+    const onSubmit = async (event) => {
         event.preventDefault();
         console.log(login, password)
-    }
+            try {
+              const user = await loginUserClient({ login, password });
+              window.localStorage.setItem("user", JSON.stringify(user))
+              router.replace("/")
+              console.log(user);
+            } catch (err) {
+              console.log(err);
+            }
+          };
+    
 
     return (
         <>
@@ -27,28 +40,23 @@ export default function Login () {
                         />
                     </StyledInput>
                     <StyledInput>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" 
-                       // value={login} onChange={(e) => setLogin(e.target.value)}
-                        />
-                    </StyledInput>
-                    <StyledInput>
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" name="password" 
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
-                        //value={password} onChange={(e) => setPassword(e.target.value)} 
+                        //value={password} 
+                        //onChange={(e) => setPassword(e.target.value)} 
                         />
                     </StyledInput>
                     <button type="submit">Увійти</button>
                 </StyledForm>
             </main>
         </>
-    )
+  )
 }
-import { StyledForm, StyledInput } from "@/components/Styled.Form";
 
-export default function Registration() {
+
+export  function  Registration() {
   return (
     <>
       <Header />
@@ -67,5 +75,5 @@ export default function Registration() {
         </StyledForm>
       </main>
     </>
-  );
+  )
 }
