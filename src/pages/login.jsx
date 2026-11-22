@@ -1,5 +1,4 @@
 import { Header } from "@/components/Header";
-<<<<<<< HEAD
 import { StyledForm, StyledInput } from "@/components/StyledForm";
 import { useState } from "react";
 
@@ -47,7 +46,6 @@ export default function Login () {
         </>
     )
 }
-=======
 import { StyledForm, StyledInput } from "@/components/Styled.Form";
 
 export default function Registration() {
@@ -71,4 +69,3 @@ export default function Registration() {
     </>
   );
 }
->>>>>>> 38e109438a50cd7bb104489700bfab7033978221

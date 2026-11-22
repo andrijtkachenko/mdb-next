@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 38e109438a50cd7bb104489700bfab7033978221
 import { Pool } from "pg";
 
 const pool = new Pool({
@@ -11,9 +7,5 @@ const pool = new Pool({
     rejectUnauthorized: false,
   },
 });
-<<<<<<< HEAD
-export default pool;
-=======
 
 export default pool;
->>>>>>> 38e109438a50cd7bb104489700bfab7033978221
